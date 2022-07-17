@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+
+
+
+  </body>
+
+  <script>
+    let getName = function (details = {}) {
+      let { name = 989898, age = 0, address = 'XXX', ...others } = details;
+      let desc = `Hey.. this is ${name} an im ${age}. and im from ${address}`;
+      if (age > 18) {
+        details.group = 'Blue House';
+      } else {
+        details.group = 'Green House';
+      }
+      console.log(desc, others);
+    };
+    let person = {
+      group: 'red House',
+      city: 'Chennai',
+      pinCode: 909090,
+      empId: '123',
+      exp: 2,
+      bG: 'O+ve'
+    };
+    // getName(person);
+    let fruitsCount = [20, 40, 'orange', 'lemon', 45, '32'];
+    let [...rest] = fruitsCount;
+    fruitsCount.push('cookies');
+    console.log('rest', rest);
+    console.log('fruitsCount', fruitsCount);
+
+    let richFruits = ['apple', 'dragon fruit', 'grape'];
+    let nonRichFruits = ['lemon', 'banana'];
+    let fruits = [...nonRichFruits, ...richFruits, 'papaya'];
+    console.log(fruits);
+
+
+
+  </script>
+</html>
