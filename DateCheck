@@ -1,0 +1,164 @@
+
+import moment from "moment"
+
+let sample = [
+   {
+        "_id": "635b750a32a23bce466b2405",
+        "premierLeagueID": "635b750a32a23bce466b2403",
+        "matchDays": "Match Day 1",
+        "__v": 0,
+        "endDate": "",
+        "startDate": " 2022-08-06Z 16:30:00Z",
+        lid:2
+    },
+    {
+        "_id": "635b750a32a23bce466b2405",
+        "premierLeagueID": "635b750a32a23bce466b2403",
+        "matchDays": "Match Day 3",
+        "__v": 0,
+        "endDate": "",
+        "startDate": " 2022-12-10Z 16:30:00Z",
+        lid:4
+    },
+    
+    {
+        "_id": "635b75ec32a23bce466b2428",
+        "premierLeagueID": "635b750a32a23bce466b2403",
+        "matchDays": "MatchDay 2",
+        "__v": 0,
+        "endDate": "",
+        "startDate": " 2022-10-28Z 11:30:00Z",
+        lid:9
+    },
+    {
+        "_id": "635b75ec32a23bce466b2428",
+        "premierLeagueID": "635b750a32a23bce466b2403",
+        "matchDays": "MatchDay 4",
+        "__v": 0,
+        "endDate": "",
+        "startDate": " 2022-10-02Z 11:30:00Z",
+        lid:10
+    }
+]
+let lessThanCurrentDate=[]
+let greaterThanCurrentDate = []
+let currentDate = moment(new Date()).format("YYYY-MM-DD")
+let parseCurrentDate=Date.parse(currentDate)
+sample.map(item => {
+  let startDate = moment(item.startDate).format("YYYY-MM-DD")
+
+  let parseStartDate =  Date.parse(startDate)
+if(parseStartDate < parseCurrentDate){
+lessThanCurrentDate.push(item)
+}else{
+  greaterThanCurrentDate.push(item)
+}
+})
+let resLessThanCurrentDate = lessThanCurrentDate.sort((a,b)=> new Date(b.startDate).getTime() - 
+new Date(a.startDate).getTime());
+let greaterCurrentDate = greaterThanCurrentDate.sort((a,b)=> new Date(b.startDate).getTime() - 
+new Date(a.startDate).getTime());
+console.log(resLessThanCurrentDate,greaterCurrentDate)
+
+let final = [...greaterThanCurrentDate,...lessThanCurrentDate]
+console.log(final)
+
+
+///Output
+// [{...}, {...}, {...}, {...}]
+// 0
+// :
+// (7) {_id: "635b750a32a23bce466b2405", pr...}
+// _id
+// :
+// "635b750a32a23bce466b2405"
+// premierLeagueID
+// :
+// "635b750a32a23bce466b2403"
+// matchDays
+// :
+// "Match Day 3"
+// __v
+// :
+// 0
+// endDate
+// :
+// ""
+// startDate
+// :
+// " 2022-12-10Z 16:30:00Z"
+// lid
+// :
+// 4
+// 1
+// :
+// (7) {_id: "635b75ec32a23bce466b2428", pr...}
+// _id
+// :
+// "635b75ec32a23bce466b2428"
+// premierLeagueID
+// :
+// "635b750a32a23bce466b2403"
+// matchDays
+// :
+// "MatchDay 2"
+// __v
+// :
+// 0
+// endDate
+// :
+// ""
+// startDate
+// :
+// " 2022-10-28Z 11:30:00Z"
+// lid
+// :
+// 9
+// 2
+// :
+// (7) {_id: "635b75ec32a23bce466b2428", pr...}
+// _id
+// :
+// "635b75ec32a23bce466b2428"
+// premierLeagueID
+// :
+// "635b750a32a23bce466b2403"
+// matchDays
+// :
+// "MatchDay 4"
+// __v
+// :
+// 0
+// endDate
+// :
+// ""
+// startDate
+// :
+// " 2022-10-02Z 11:30:00Z"
+// lid
+// :
+// 10
+// 3
+// :
+// (7) {_id: "635b750a32a23bce466b2405", pr...}
+// _id
+// :
+// "635b750a32a23bce466b2405"
+// premierLeagueID
+// :
+// "635b750a32a23bce466b2403"
+// matchDays
+// :
+// "Match Day 1"
+// __v
+// :
+// 0
+// endDate
+// :
+// ""
+// startDate
+// :
+// " 2022-08-06Z 16:30:00Z"
+// lid
+// :
+// 2]
